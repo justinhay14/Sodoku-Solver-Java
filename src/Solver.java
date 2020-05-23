@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Solver {
@@ -10,6 +11,9 @@ public class Solver {
             }
         }
         solutions = new ArrayList<int[][]>();
+    }
+    public ArrayList<int[][]> getSolutions() {
+        return solutions;
     }
     public boolean possible(int y, int x, int num) {
         for (int i = 0; i < 9; i++) {
@@ -28,21 +32,20 @@ public class Solver {
         }
         return true;
     }
-    void solve_puzzle() {
+    public void solve_puzzle() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (grid[i][j] == 0) {
                     for (int n = 1; n <= 9; n++) {
-                        if (possible(i,j,n)) {
+                        if (possible(i, j, n)) {
                             grid[i][j] = n;
                             solve_puzzle();
                             grid[i][j] = 0;
                         }
                     }
-                    return null;
+                    return;
                 }
             }
         }
-        return null;
     }
 }
