@@ -9,7 +9,6 @@ public class Solver {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 this.grid[i][j] = grid[i][j];
-                System.out.println("iteration");
             }
         }
         solutions = new ArrayList<int[][]>();
@@ -21,11 +20,13 @@ public class Solver {
         for (int i = 0; i < 9; i++) {
             if (grid[y][i] == num)
                 return false;
+        }
+        for (int i = 0; i < 9; i++) {
             if (grid[i][x] == num)
                 return false;
         }
-        int x0 = (x % 3) * 3;
-        int y0 = (y % 3) * 3;
+        int x0 = (x / 3) * 3;
+        int y0 = (y / 3) * 3;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (grid[y0 + i][x0 + j] == num)
@@ -49,6 +50,12 @@ public class Solver {
                 }
             }
         }
-        solutions.add(grid);
+        int[][] sol = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                sol[i][j] = grid[i][j];
+            }
+        }
+        solutions.add(sol);
     }
 }

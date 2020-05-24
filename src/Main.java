@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    static void printGrid(int[][] grid) {
+    public static void printGrid(int[][] grid) {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
             for (int j = 0; j < 8; j++) {
@@ -18,7 +18,6 @@ public class Main {
                 grid[i][j] = scan.nextInt();
             }
         }
-        printGrid(grid);
         Solver solver = new Solver(grid);
         solver.solve_puzzle();
         for (int[][] sol : solver.getSolutions()) {
