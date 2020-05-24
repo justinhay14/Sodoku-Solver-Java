@@ -5,9 +5,11 @@ public class Solver {
     private int grid[][];
     private ArrayList<int[][]> solutions;
     public Solver(int grid[][]) {
+        this.grid = new int[9][9];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 this.grid[i][j] = grid[i][j];
+                System.out.println("iteration");
             }
         }
         solutions = new ArrayList<int[][]>();
