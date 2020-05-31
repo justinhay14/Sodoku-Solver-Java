@@ -40,6 +40,12 @@ public class Main {
         frame.add(mainPanel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainPanel.setVisible(true);
+        JPanel bottomPanel = new JPanel();
+        JButton calculateButton = new JButton("CALCULATE");
+        calculateButton.setVisible(true);
+        bottomPanel.add(calculateButton);
+        bottomPanel.setVisible(true);
+        frame.add(bottomPanel, BorderLayout.PAGE_END);
         frame.setVisible(true);
         int[][] grid = new int[9][9];
         /*Scanner scan = new Scanner(System.in);
