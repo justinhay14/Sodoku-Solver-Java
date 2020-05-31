@@ -1,2 +1,2 @@
 # Sodoku-Solver-Java
-This is a sodoku solver program that uses a GUI and feels snappy to use.
+This is a sudoku solver program that uses a GUI and feels snappy to use.
