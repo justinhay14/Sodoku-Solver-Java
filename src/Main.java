@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,7 +7,7 @@ import java.awt.event.*;
 public class Main {
     public static boolean baseMode = true;
     public static int[][] grid = new int[9][9];
-    public static void printGrid(int[][] grid) {
+    public static void printGrid() {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
             for (int j = 0; j < 8; j++) {
@@ -15,15 +16,19 @@ public class Main {
             System.out.println(grid[i][8] + "]");
         }
     }
-    public static void stringGrid(int[][] grid) {
+    public static String stringGrid(ArrayList<int[][]> grids) {
         String answer = "";
-        for (int i = 0; i < 9; i++) {
-            answer = answer + "[";
-            for (int j = 0; j < 8; j++) {
-                answer = answer + grid[i][j] + " ";
+        for (int k = 0; k < grids.size(); k++) {
+            for (int i = 0; i < 9; i++) {
+                answer = answer + "[";
+                for (int j = 0; j < 8; j++) {
+                    answer = answer + grid[i][j] + " ";
+                }
+                answer = answer + grid[i][8] + "]\n";
             }
-            answer = answer + grid[i][8] + "]";
+            answer = answer + "\n";
         }
+        return answer;
     }
     public static void main(String args[]) {
         JFrame frame = new JFrame("Sudoku Solver");
@@ -34,6 +39,11 @@ public class Main {
         titlePanel.add(title);
         frame.add(titlePanel, BorderLayout.PAGE_START);
         JPanel mainPanel = new JPanel();
+        JTextPane solutionsPane = new JTextPane();
+        solutionsPane.setVisible(false);
+        JPanel solPanel = new JPanel();
+        solPanel.add(solutionsPane);
+        frame.add(solPanel, BorderLayout.LINE_START);
         mainPanel.setLayout(new GridLayout(9,9));
         frame.setSize(450,450);
         JPanel [][]GridGUI = new JPanel[9][9];
@@ -71,6 +81,8 @@ public class Main {
                         jt[i][j].setText("");
                     }
                 }
+                title.setForeground(Color.BLACK);
+                title.setText("Sudoku Solver");
             }
         });
         calculateButton.addActionListener(new ActionListener() {
@@ -99,9 +111,31 @@ public class Main {
                             grid[i][j] = num;
                         }
                     }
+                    for (int i = 0; i < 9; i++) {
+                        for (int j = 0; j < 9; j++) {
+                            jt[i][j].setText("");
+                        }
+                    }
+                    mainPanel.setVisible(false);
+                    solPanel.setVisible(true);
+                    Solver solver = new Solver(grid);
+                    ArrayList<int[][]> solutions = solver.getSolutions();
+                    clearButton.setVisible(false);
+                    title.setText("Solutions");
+                    solutionsPane.setText(/*stringGrid(solutions)*/"nothing");
+                    solutionsPane.setVisible(true);
+                    calculateButton.setText("Back");
                     baseMode = false;
+                } else {
+                    title.setText("Sudoku Solver");
+                    calculateButton.setText("CALCULATE");
+                    solPanel.setVisible(false);
+                    solutionsPane.setText("");
+                    solutionsPane.setVisible(false);
+                    clearButton.setVisible(true);
+                    mainPanel.setVisible(true);
+                    baseMode = true;
                 }
-
             }
         });
 
