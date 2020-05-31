@@ -4,6 +4,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 public class Main {
+    public static boolean baseMode = true;
+    public static int[][] grid = new int[9][9];
     public static void printGrid(int[][] grid) {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
@@ -25,14 +27,15 @@ public class Main {
         mainPanel.setLayout(new GridLayout(9,9));
         frame.setSize(450,450);
         JPanel [][]GridGUI = new JPanel[9][9];
+        JTextField jt[][] = new JTextField[9][9];
         for (int i = 0 ; i < GridGUI.length; i++) {
             for (int j = 0; j < GridGUI[i].length; j++) {
                 GridGUI[i][j] = new JPanel();
                 Border b = BorderFactory.createLineBorder(Color.BLACK);
                 GridGUI[i][j].setBorder(b);
-                JTextField jt = new JTextField(2);
-                jt.setVisible(true);
-                GridGUI[i][j].add(jt);
+                jt[i][j] = new JTextField(2);
+                jt[i][j].setVisible(true);
+                GridGUI[i][j].add(jt[i][j]);
                 mainPanel.add(GridGUI[i][j]);
                 GridGUI[i][j].setVisible(true);
             }
@@ -47,7 +50,38 @@ public class Main {
         bottomPanel.setVisible(true);
         frame.add(bottomPanel, BorderLayout.PAGE_END);
         frame.setVisible(true);
-        int[][] grid = new int[9][9];
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (baseMode) {
+                    for (int i = 0; i < 9; i++) {
+                        for (int j = 0; j < 9; j++) {
+                            if (jt[i][j].getText().equals("")) {
+                                grid[i][j] = 0;
+                                continue;
+                            }
+                            int num = -1;
+                            try {
+                                num = Integer.parseInt(jt[i][j].getText());
+                            } catch (IndexOutOfBoundsException e) {
+                                title.setText("Error! Invalid Number in row " + (i + 1) + " column " + (j + 1));
+                                title.setForeground(Color.RED);
+                                continue;
+                            }
+                            if (num < 0 || num > 9) {
+                                title.setText("Error! Invalid Number in row " + (i + 1) + " column " + (j + 1));
+                                title.setForeground(Color.RED);
+                                continue;
+                            }
+                            grid[i][j] = num;
+                        }
+                    }
+                    baseMode = false;
+                }
+
+            }
+        });
+
         /*Scanner scan = new Scanner(System.in);
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
