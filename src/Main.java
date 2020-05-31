@@ -16,18 +16,16 @@ public class Main {
             System.out.println(grid[i][8] + "]");
         }
     }
-    public static String stringGrid(ArrayList<int[][]> grids) {
+    public static String stringGrid(int[][] grid) {
         String answer = "";
-        for (int k = 0; k < grids.size(); k++) {
-            for (int i = 0; i < 9; i++) {
-                answer = answer + "[";
-                for (int j = 0; j < 8; j++) {
-                    answer = answer + grid[i][j] + " ";
-                }
-                answer = answer + grid[i][8] + "]\n";
+        for (int i = 0; i < 9; i++) {
+            answer = answer + "[";
+            for (int j = 0; j < 8; j++) {
+                answer = answer + grid[i][j] + " ";
             }
-            answer = answer + "\n";
+            answer = answer + grid[i][8] + "]\n";
         }
+        answer = answer + "\n";
         return answer;
     }
     public static void main(String args[]) {
@@ -122,7 +120,11 @@ public class Main {
                     ArrayList<int[][]> solutions = solver.getSolutions();
                     clearButton.setVisible(false);
                     title.setText("Solutions");
-                    solutionsPane.setText(/*stringGrid(solutions)*/"nothing");
+                    String newText = "";
+                    for (int[][] solution : solutions) {
+                        newText = newText + stringGrid(solution);
+                    }
+                    solutionsPane.setText(newText);
                     solutionsPane.setVisible(true);
                     calculateButton.setText("Back");
                     baseMode = false;
