@@ -44,12 +44,25 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainPanel.setVisible(true);
         JPanel bottomPanel = new JPanel();
+        JButton clearButton = new JButton("Clear");
         JButton calculateButton = new JButton("CALCULATE");
+        clearButton.setVisible(true);
         calculateButton.setVisible(true);
+        bottomPanel.add(clearButton);
         bottomPanel.add(calculateButton);
         bottomPanel.setVisible(true);
         frame.add(bottomPanel, BorderLayout.PAGE_END);
         frame.setVisible(true);
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        jt[i][j].setText("");
+                    }
+                }
+            }
+        });
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
