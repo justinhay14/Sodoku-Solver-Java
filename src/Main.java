@@ -15,6 +15,16 @@ public class Main {
             System.out.println(grid[i][8] + "]");
         }
     }
+    public static void stringGrid(int[][] grid) {
+        String answer = "";
+        for (int i = 0; i < 9; i++) {
+            answer = answer + "[";
+            for (int j = 0; j < 8; j++) {
+                answer = answer + grid[i][j] + " ";
+            }
+            answer = answer + grid[i][8] + "]";
+        }
+    }
     public static void main(String args[]) {
         JFrame frame = new JFrame("Sudoku Solver");
         frame.setLayout(new BorderLayout());
