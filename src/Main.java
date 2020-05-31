@@ -76,15 +76,15 @@ public class Main {
                             int num = -1;
                             try {
                                 num = Integer.parseInt(jt[i][j].getText());
-                            } catch (IndexOutOfBoundsException e) {
+                            } catch (NumberFormatException e) {
                                 title.setText("Error! Invalid Number in row " + (i + 1) + " column " + (j + 1));
                                 title.setForeground(Color.RED);
-                                continue;
+                                return;
                             }
                             if (num < 0 || num > 9) {
                                 title.setText("Error! Invalid Number in row " + (i + 1) + " column " + (j + 1));
                                 title.setForeground(Color.RED);
-                                continue;
+                                return;
                             }
                             grid[i][j] = num;
                         }
