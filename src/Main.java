@@ -42,20 +42,37 @@ public class Main {
         JPanel solPanel = new JPanel();
         solPanel.add(solutionsPane);
         frame.add(solPanel, BorderLayout.LINE_START);
-        mainPanel.setLayout(new GridLayout(9,9));
+        mainPanel.setLayout(new GridLayout(10,10));
         frame.setSize(450,450);
-        JPanel [][]GridGUI = new JPanel[9][9];
+        JPanel [][]GridGUI = new JPanel[10][10];
         JTextField jt[][] = new JTextField[9][9];
-        for (int i = 0 ; i < GridGUI.length; i++) {
-            for (int j = 0; j < GridGUI[i].length; j++) {
-                GridGUI[i][j] = new JPanel();
+        GridGUI[0][0] = new JPanel();
+        mainPanel.add(GridGUI[0][0]);
+        GridGUI[0][0].setVisible(true);
+        for (int i = 1; i <= 9; i++) {
+            GridGUI[0][i] = new JPanel();
+            GridGUI[0][i].add(new JLabel((i) + ""));
+            mainPanel.add(GridGUI[0][i]);
+            GridGUI[0][i].setVisible(true);
+            /*GridGUI[i][0] = new JPanel();
+            GridGUI[i][0].add(new JLabel((i) + ""));
+            mainPanel.add(GridGUI[i][0]);
+            GridGUI[i][0].setVisible(true);*/
+        }
+        for (int i = 0 ; i < 9; i++) {
+            GridGUI[i + 1][0] = new JPanel();
+            GridGUI[i+1][0].add(new JLabel((i + 1) + ""));
+            mainPanel.add(GridGUI[i+1][0]);
+            GridGUI[i+1][0].setVisible(true);
+            for (int j = 0; j < 9; j++) {
+                GridGUI[i+1][j+1] = new JPanel();
                 Border b = BorderFactory.createLineBorder(Color.BLACK);
-                GridGUI[i][j].setBorder(b);
+                GridGUI[i+1][j+1].setBorder(b);
                 jt[i][j] = new JTextField(2);
                 jt[i][j].setVisible(true);
-                GridGUI[i][j].add(jt[i][j]);
-                mainPanel.add(GridGUI[i][j]);
-                GridGUI[i][j].setVisible(true);
+                GridGUI[i+1][j+1].add(jt[i][j]);
+                mainPanel.add(GridGUI[i+1][j+1]);
+                GridGUI[i+1][j+1].setVisible(true);
             }
         }
         frame.add(mainPanel, BorderLayout.CENTER);
