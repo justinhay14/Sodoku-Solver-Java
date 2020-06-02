@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Main {
     public static boolean baseMode = true;
     public static int[][] grid = new int[9][9];
-    public static void printGrid() {
+    public static void printGrid(int [][] grid) {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
             for (int j = 0; j < 8; j++) {
@@ -126,6 +126,7 @@ public class Main {
                             grid[i][j] = num;
                         }
                     }
+                    System.out.println(stringGrid(grid));
                     for (int i = 0; i < 9; i++) {
                         for (int j = 0; j < 9; j++) {
                             jt[i][j].setText("");
@@ -134,11 +135,14 @@ public class Main {
                     mainPanel.setVisible(false);
                     solPanel.setVisible(true);
                     Solver solver = new Solver(grid);
+                    solver.solve_puzzle();
                     ArrayList<int[][]> solutions = solver.getSolutions();
+                    System.out.println(solutions);
                     clearButton.setVisible(false);
                     title.setText("Solutions");
                     String newText = "";
                     for (int[][] solution : solutions) {
+                        printGrid(solution);
                         newText = newText + stringGrid(solution);
                     }
                     solutionsPane.setText(newText);
