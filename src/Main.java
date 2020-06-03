@@ -17,16 +17,16 @@ public class Main {
         }
     }
     public static String stringGrid(int[][] grid) {
-        String answer = "";
+        String answer = "<html>";
         for (int i = 0; i < 9; i++) {
             answer = answer + "[";
             for (int j = 0; j < 8; j++) {
                 answer = answer + grid[i][j] + " ";
             }
-            answer = answer + grid[i][8] + "]\n";
+            answer = answer + grid[i][8] + "]<br/>";
         }
-        answer = answer + "\n";
-        return answer;
+        answer = answer + "<br/>";
+        return answer + "</html>";
     }
     public static void main(String args[]) {
         JFrame frame = new JFrame("Sudoku Solver");
@@ -37,7 +37,7 @@ public class Main {
         titlePanel.add(title);
         frame.add(titlePanel, BorderLayout.PAGE_START);
         JPanel mainPanel = new JPanel();
-        JTextPane solutionsPane = new JTextPane();
+        JLabel solutionsPane = new JLabel();
         solutionsPane.setVisible(false);
         JPanel solPanel = new JPanel();
         solPanel.add(solutionsPane);
