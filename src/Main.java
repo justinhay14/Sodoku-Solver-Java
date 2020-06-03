@@ -17,7 +17,7 @@ public class Main {
         }
     }
     public static String stringGrid(int[][] grid) {
-        String answer = "<html>";
+        String answer = "";
         for (int i = 0; i < 9; i++) {
             answer = answer + "[";
             for (int j = 0; j < 8; j++) {
@@ -26,7 +26,7 @@ public class Main {
             answer = answer + grid[i][8] + "]<br/>";
         }
         answer = answer + "<br/>";
-        return answer + "</html>";
+        return answer;
     }
     public static void main(String args[]) {
         JFrame frame = new JFrame("Sudoku Solver");
@@ -134,12 +134,12 @@ public class Main {
                     ArrayList<int[][]> solutions = solver.getSolutions();
                     clearButton.setVisible(false);
                     title.setText("Solutions");
-                    String newText = "";
+                    String newText = "<html>";
                     for (int[][] solution : solutions) {
                         printGrid(solution);
                         newText = newText + stringGrid(solution);
                     }
-                    solutionsPane.setText(newText);
+                    solutionsPane.setText(newText + "</html>");
                     solutionsPane.setVisible(true);
                     calculateButton.setText("Back");
                     baseMode = false;
