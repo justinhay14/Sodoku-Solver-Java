@@ -54,10 +54,6 @@ public class Main {
             GridGUI[0][i].add(new JLabel((i) + ""));
             mainPanel.add(GridGUI[0][i]);
             GridGUI[0][i].setVisible(true);
-            /*GridGUI[i][0] = new JPanel();
-            GridGUI[i][0].add(new JLabel((i) + ""));
-            mainPanel.add(GridGUI[i][0]);
-            GridGUI[i][0].setVisible(true);*/
         }
         for (int i = 0 ; i < 9; i++) {
             GridGUI[i + 1][0] = new JPanel();
@@ -126,7 +122,6 @@ public class Main {
                             grid[i][j] = num;
                         }
                     }
-                    System.out.println(stringGrid(grid));
                     for (int i = 0; i < 9; i++) {
                         for (int j = 0; j < 9; j++) {
                             jt[i][j].setText("");
@@ -137,7 +132,6 @@ public class Main {
                     Solver solver = new Solver(grid);
                     solver.solve_puzzle();
                     ArrayList<int[][]> solutions = solver.getSolutions();
-                    System.out.println(solutions);
                     clearButton.setVisible(false);
                     title.setText("Solutions");
                     String newText = "";
