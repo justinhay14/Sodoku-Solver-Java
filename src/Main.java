@@ -155,17 +155,5 @@ public class Main {
                 }
             }
         });
-
-        /*Scanner scan = new Scanner(System.in);
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                grid[i][j] = scan.nextInt();
-            }
-        }
-        Solver solver = new Solver(grid);
-        solver.solve_puzzle();
-        for (int[][] sol : solver.getSolutions()) {
-            printGrid(sol);
-        }*/
     }
 }
