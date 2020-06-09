@@ -98,6 +98,7 @@ public class Main {
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                title.setForeground(Color.BLACK);
                 if (baseMode) {
                     for (int i = 0; i < 9; i++) {
                         for (int j = 0; j < 9; j++) {
@@ -126,26 +127,28 @@ public class Main {
                             jt[i][j].setText("");
                         }
                     }
-                    mainPanel.setVisible(false);
-                    solPanel.setVisible(true);
-                    /*
-                    Thread t = new Thread(new TimeOut());
-                    t.start();
-                    */
                     Solver solver = new Solver(grid);
                     solver.solve_puzzle();
                     ArrayList<int[][]> solutions = solver.getSolutions();
-                    clearButton.setVisible(false);
-                    title.setText("Solutions");
-                    String newText = "<html>";
-                    for (int[][] solution : solutions) {
-                        printGrid(solution);
-                        newText = newText + stringGrid(solution);
+                    if (solutions == null) {
+                        title.setText("Error! Unsolvable puzzle.");
+                        title.setForeground(Color.RED);
                     }
-                    solutionsPane.setText(newText + "</html>");
-                    solutionsPane.setVisible(true);
-                    calculateButton.setText("Back");
-                    baseMode = false;
+                    else {
+                        mainPanel.setVisible(false);
+                        solPanel.setVisible(true);
+                        clearButton.setVisible(false);
+                        title.setText("Solutions");
+                        String newText = "<html>";
+                        for (int[][] solution : solutions) {
+                            printGrid(solution);
+                            newText = newText + stringGrid(solution);
+                        }
+                        solutionsPane.setText(newText + "</html>");
+                        solutionsPane.setVisible(true);
+                        calculateButton.setText("Back");
+                        baseMode = false;
+                    }
                 } else {
                     title.setText("Sudoku Solver");
                     calculateButton.setText("CALCULATE");

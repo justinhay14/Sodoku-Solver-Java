@@ -40,6 +40,7 @@ public class Solver {
     public void solve_puzzle() {
         for (int i = 0; i < 9; i++) {
             if (functionCalls >= 10000) {
+                solutions = null;
                 return;
             }
             for (int j = 0; j < 9; j++) {
