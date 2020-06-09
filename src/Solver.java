@@ -13,7 +13,7 @@ public class Solver {
             }
         }
         solutions = new ArrayList<int[][]>();
-        functionCalls = 0;
+        functionCalls = 1;
     }
     public ArrayList<int[][]> getSolutions() {
         return solutions;
@@ -44,6 +44,10 @@ public class Solver {
                     for (int n = 1; n <= 9; n++) {
                         if (possible(i, j, n)) {
                             grid[i][j] = n;
+                            functionCalls++;
+                            if (functionCalls == 1000000000) {
+                                return;
+                            }
                             solve_puzzle();
                             grid[i][j] = 0;
                         }
