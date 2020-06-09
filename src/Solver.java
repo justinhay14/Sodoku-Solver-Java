@@ -2,6 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Solver {
+    private int functionCalls;
     private int grid[][];
     private ArrayList<int[][]> solutions;
     public Solver(int grid[][]) {
@@ -12,6 +13,7 @@ public class Solver {
             }
         }
         solutions = new ArrayList<int[][]>();
+        functionCalls = 0;
     }
     public ArrayList<int[][]> getSolutions() {
         return solutions;
