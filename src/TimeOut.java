@@ -6,9 +6,9 @@ public class TimeOut implements Runnable {
     public void run() {
         try {
             Thread.sleep(3000);
-            throw new TimeoutException();
-        } catch (InterruptedException | TimeoutException e) {
-            e.printStackTrace();
+            System.out.println("ended");
+        } catch (InterruptedException e) {
+            System.out.println("succeeded");
         }
     }
 }

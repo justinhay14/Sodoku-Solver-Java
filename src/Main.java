@@ -128,6 +128,10 @@ public class Main {
                     }
                     mainPanel.setVisible(false);
                     solPanel.setVisible(true);
+                    /*
+                    Thread t = new Thread(new TimeOut());
+                    t.start();
+                    */
                     Solver solver = new Solver(grid);
                     solver.solve_puzzle();
                     ArrayList<int[][]> solutions = solver.getSolutions();
