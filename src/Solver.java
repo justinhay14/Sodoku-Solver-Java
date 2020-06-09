@@ -39,15 +39,16 @@ public class Solver {
     }
     public void solve_puzzle() {
         for (int i = 0; i < 9; i++) {
+            if (functionCalls >= 10000) {
+                return;
+            }
             for (int j = 0; j < 9; j++) {
                 if (grid[i][j] == 0) {
                     for (int n = 1; n <= 9; n++) {
                         if (possible(i, j, n)) {
                             grid[i][j] = n;
                             functionCalls++;
-                            if (functionCalls == 1000000000) {
-                                return;
-                            }
+                            System.out.println(functionCalls);
                             solve_puzzle();
                             grid[i][j] = 0;
                         }
