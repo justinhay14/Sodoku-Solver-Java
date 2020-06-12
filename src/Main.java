@@ -20,7 +20,7 @@ public class Main {
         for (int i = 0; i < 9; i++) {
             answer = answer + "[";
             for (int j = 0; j < 8; j++) {
-                answer = answer + grid[i][j] + "   ";
+                answer = answer + grid[i][j] + "&nbsp;&nbsp;&nbsp;";
             }
             answer = answer + grid[i][8] + "]<br/>";
         }
