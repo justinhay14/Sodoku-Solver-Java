@@ -10,7 +10,7 @@ public class Main {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
             for (int j = 0; j < 8; j++) {
-                System.out.print(grid[i][j] + " ");
+                System.out.print(grid[i][j] + "   ");
             }
             System.out.println(grid[i][8] + "]");
         }
@@ -20,7 +20,7 @@ public class Main {
         for (int i = 0; i < 9; i++) {
             answer = answer + "[";
             for (int j = 0; j < 8; j++) {
-                answer = answer + grid[i][j] + " ";
+                answer = answer + grid[i][j] + "   ";
             }
             answer = answer + grid[i][8] + "]<br/>";
         }
