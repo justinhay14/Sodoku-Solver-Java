@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Solver {
     private int functionCalls;
+    private int numSolutions;
     private int grid[][];
     private ArrayList<int[][]> solutions;
     public Solver(int grid[][]) {
@@ -14,6 +15,7 @@ public class Solver {
         }
         solutions = new ArrayList<int[][]>();
         functionCalls = 1;
+        numSolutions = 0;
     }
     public ArrayList<int[][]> getSolutions() {
         return solutions;
@@ -38,6 +40,9 @@ public class Solver {
         return true;
     }
     public void solve_puzzle() {
+        if (numSolutions == 10) {
+            return;
+        }
         for (int i = 0; i < 9; i++) {
             if (functionCalls >= 10000) {
                 solutions = null;
@@ -64,6 +69,7 @@ public class Solver {
                 sol[i][j] = grid[i][j];
             }
         }
+        numSolutions++;
         solutions.add(sol);
     }
 }
