@@ -138,7 +138,7 @@ public class Main {
                         mainPanel.setVisible(false);
                         solPanel.setVisible(true);
                         clearButton.setVisible(false);
-                        title.setText("The first 10 Solutions");
+                        title.setText("The First 10 Solutions");
                         String newText = "<html>";
                         for (int[][] solution : solutions) {
                             printGrid(solution);
