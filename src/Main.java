@@ -3,10 +3,12 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+
 public class Main {
     public static boolean baseMode = true;
     public static int[][] grid = new int[9][9];
-    public static void printGrid(int [][] grid) {
+
+    public static void printGrid(int[][] grid) {
         for (int i = 0; i < 9; i++) {
             System.out.print("[");
             for (int j = 0; j < 8; j++) {
@@ -15,6 +17,7 @@ public class Main {
             System.out.println(grid[i][8] + "]");
         }
     }
+
     public static String stringGrid(int[][] grid) {
         String answer = "";
         for (int i = 0; i < 9; i++) {
@@ -27,6 +30,7 @@ public class Main {
         answer = answer + "<br/>";
         return answer;
     }
+
     public static void main(String args[]) {
         JFrame frame = new JFrame("Sudoku Solver");
         frame.setLayout(new BorderLayout());
@@ -41,9 +45,9 @@ public class Main {
         JPanel solPanel = new JPanel();
         solPanel.add(solutionsPane);
         frame.add(solPanel, BorderLayout.LINE_START);
-        mainPanel.setLayout(new GridLayout(10,10));
-        frame.setSize(450,450);
-        JPanel [][]GridGUI = new JPanel[10][10];
+        mainPanel.setLayout(new GridLayout(10, 10));
+        frame.setSize(450, 450);
+        JPanel[][] GridGUI = new JPanel[10][10];
         JTextField jt[][] = new JTextField[9][9];
         GridGUI[0][0] = new JPanel();
         mainPanel.add(GridGUI[0][0]);
@@ -54,20 +58,20 @@ public class Main {
             mainPanel.add(GridGUI[0][i]);
             GridGUI[0][i].setVisible(true);
         }
-        for (int i = 0 ; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             GridGUI[i + 1][0] = new JPanel();
-            GridGUI[i+1][0].add(new JLabel((i + 1) + ""));
-            mainPanel.add(GridGUI[i+1][0]);
-            GridGUI[i+1][0].setVisible(true);
+            GridGUI[i + 1][0].add(new JLabel((i + 1) + ""));
+            mainPanel.add(GridGUI[i + 1][0]);
+            GridGUI[i + 1][0].setVisible(true);
             for (int j = 0; j < 9; j++) {
-                GridGUI[i+1][j+1] = new JPanel();
+                GridGUI[i + 1][j + 1] = new JPanel();
                 Border b = BorderFactory.createLineBorder(Color.BLACK);
-                GridGUI[i+1][j+1].setBorder(b);
+                GridGUI[i + 1][j + 1].setBorder(b);
                 jt[i][j] = new JTextField(2);
                 jt[i][j].setVisible(true);
-                GridGUI[i+1][j+1].add(jt[i][j]);
-                mainPanel.add(GridGUI[i+1][j+1]);
-                GridGUI[i+1][j+1].setVisible(true);
+                GridGUI[i + 1][j + 1].add(jt[i][j]);
+                mainPanel.add(GridGUI[i + 1][j + 1]);
+                GridGUI[i + 1][j + 1].setVisible(true);
             }
         }
         frame.add(mainPanel, BorderLayout.CENTER);
@@ -133,8 +137,7 @@ public class Main {
                     if (solutions == null) {
                         title.setText("Error! Unsolvable puzzle.");
                         title.setForeground(Color.RED);
-                    }
-                    else {
+                    } else {
                         mainPanel.setVisible(false);
                         solPanel.setVisible(true);
                         clearButton.setVisible(false);

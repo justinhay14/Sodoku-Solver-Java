@@ -6,6 +6,7 @@ public class Solver {
     private int numSolutions;
     private int grid[][];
     private ArrayList<int[][]> solutions;
+
     public Solver(int grid[][]) {
         this.grid = new int[9][9];
         for (int i = 0; i < 9; i++) {
@@ -17,9 +18,11 @@ public class Solver {
         functionCalls = 1;
         numSolutions = 0;
     }
+
     public ArrayList<int[][]> getSolutions() {
         return solutions;
     }
+
     public boolean possible(int y, int x, int num) {
         for (int i = 0; i < 9; i++) {
             if (grid[y][i] == num)
@@ -39,6 +42,7 @@ public class Solver {
         }
         return true;
     }
+
     public void solve_puzzle() {
         if (numSolutions == 10) {
             return;
