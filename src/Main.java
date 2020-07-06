@@ -142,6 +142,9 @@ public class Main {
                         solPanel.setVisible(true);
                         clearButton.setVisible(false);
                         title.setText("The First 10 Solutions");
+                        if (solutions.size() <= 10) {
+                            title.setText("All Solutions");
+                        }
                         String newText = "<html>";
                         for (int[][] solution : solutions) {
                             printGrid(solution);
